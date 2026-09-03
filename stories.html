@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stories · FORCAS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Stories page specific styles */
+        .page-hero {
+            background: linear-gradient(135deg, #0b2a3e, #1a4a6a);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 0;
+        }
+        .story-item {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e6edf2;
+            transition: 0.3s;
+        }
+        .story-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+        }
+        .story-item .date {
+            color: #a64dff;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .story-item h3 {
+            color: #0b2a3e;
+            margin: 8px 0;
+        }
+        .story-item p {
+            color: #4a6a7e;
+            line-height: 1.6;
+        }
+        .story-item .read-more {
+            display: inline-block;
+            margin-top: 12px;
+            color: #a64dff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .story-item .read-more:hover {
+            color: #0b2a3e;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: #a64dff;
+            color: #0b2a3e;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 20px 0;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #a64dff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo-area">
+                <div class="logo-item">
+                    <img src="images/logo/logo.png" alt="FORCAS logo" style="height:48px; width:auto;" />
+                </div>
+            </div>
+            <div class="tagline-header"><i class="fas fa-seedling"></i> For Children, With Children</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#programmes">Programmes</a>
+                <a href="index.html#impact">Impact</a>
+                <a href="index.html#partners">Partners</a>
+                <a href="stories.html">Stories</a>
+                <a href="news.html">News</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="donate.html" class="btn"><i class="fas fa-hand-holding-heart"></i> Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>📖 Stories of Change</h1>
+            <p>Real stories from the communities we serve — one child at a time.</p>
+        </div>
+    </section>
+
+<!-- ===== STORIES GRID ===== -->
+    <div class="container">
+        <div class="stories-grid">
+            
+            <div class="story-item">
+                <span class="date">📅 August 2026</span>
+                <h3>From Vulnerability to Opportunity</h3>
+                <p>One orphan who received community-based assistance is now an adult and civil service officer. This is the power of investing in children.</p>
+                <a href="#" class="read-more">Read Full Story →</a>
+            </div>
+            
+            <div class="story-item">
+                <span class="date">📅 July 2026</span>
+                <h3>Empowering Young Women Through Skills</h3>
+                <p>20 young people trained in soap and candle making now have sustainable livelihoods and are supporting their families.</p>
+                <a href="#" class="read-more">Read Full Story →</a>
+            </div>
+            
+            <div class="story-item">
+                <span class="date">📅 June 2026</span>
+                <h3>Clean Water Brings Hope to Kaphiri</h3>
+                <p>The borehole supported by FORCAS now provides clean water to hundreds of families, reducing waterborne diseases.</p>
+                <a href="#" class="read-more">Read Full Story →</a>
+            </div>
+            
+            <div class="story-item">
+                <span class="date">📅 May 2026</span>
+                <h3>25 Peer Educators Trained</h3>
+                <p>Youth peer educators are now leading HIV prevention activities in their communities, reaching over 4,000 young people.</p>
+                <a href="#" class="read-more">Read Full Story →</a>
+            </div>
+            
+            <div class="story-item">
+                <span class="date">📅 April 2026</span>
+                <h3>Under-Five Health Facility Supported</h3>
+                <p>With support from the U.S. Embassy Ambassadors Self-Help Program, a health facility now provides critical care for children.</p>
+                <a href="#" class="read-more">Read Full Story →</a>
+            </div>
+            
+            <div class="story-item">
+                <span class="date">📅 March 2026</span>
+                <h3>Building Resilience in Communities</h3>
+                <p>Through our WASH and nutrition programmes, communities are building resilience against health challenges.</p>
+                <a href="#" class="read-more">Read Full Story →</a>
+            </div>
+            
+        </div>
+        
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div><strong>FORCAS</strong><br>For Children, With Children<br>Protecting Children. Empowering Young People. Strengthening Communities.</div>
+                <div><a href="index.html">Home</a> · <a href="stories.html">Stories</a> · <a href="news.html">News</a> · <a href="donate.html">Donate</a></div>
+                <div><i class="fas fa-envelope"></i> info@forcasfoundationmw.org<br><i class="fas fa-phone"></i> +265 999 265 816</div>
+            </div>
+            <div class="footer-bottom">
+                <span>© Forum for Child Affairs Support (FORCAS). All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

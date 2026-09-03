@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News · FORCAS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* News page specific styles */
+        .page-hero {
+            background: linear-gradient(135deg, #0b2a3e, #1a4a6a);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+        .page-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+        }
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .news-list {
+            padding: 40px 0;
+        }
+        .news-item {
+            display: flex;
+            gap: 24px;
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 24px;
+            border: 1px solid #e6edf2;
+            transition: 0.3s;
+        }
+        .news-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+        }
+        .news-date {
+            min-width: 100px;
+            text-align: center;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        .news-date .day {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #a64dff;
+            display: block;
+        }
+        .news-date .month {
+            font-size: 0.8rem;
+            color: #4a6a7e;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .news-content h3 {
+            color: #0b2a3e;
+            margin: 0 0 8px 0;
+        }
+        .news-content p {
+            color: #4a6a7e;
+            line-height: 1.6;
+        }
+        .news-content .read-more {
+            display: inline-block;
+            margin-top: 8px;
+            color: #a64dff;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .news-content .read-more:hover {
+            color: #0b2a3e;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: #a64dff;
+            color: #0b2a3e;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 20px 0;
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            background: #a64dff;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 700px) {
+            .news-item {
+                flex-direction: column;
+            }
+            .news-date {
+                min-width: auto;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                padding: 8px 16px;
+            }
+            .news-date .day {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="logo-area">
+                <div class="logo-item">
+                    <img src="images/logo/logo.png" alt="FORCAS logo" style="height:48px; width:auto;" />
+                </div>
+            </div>
+            <div class="tagline-header"><i class="fas fa-seedling"></i> For Children, With Children</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#programmes">Programmes</a>
+                <a href="index.html#impact">Impact</a>
+                <a href="index.html#partners">Partners</a>
+                <a href="stories.html">Stories</a>
+                <a href="news.html">News</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="donate.html" class="btn"><i class="fas fa-hand-holding-heart"></i> Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>📰 Latest News</h1>
+            <p>Stay updated with FORCAS programme updates, community stories, and partnership news.</p>
+        </div>
+    </section>
+
+    <!-- ===== NEWS LIST ===== -->
+    <div class="container">
+        <div class="news-list">
+            
+            <div class="news-item">
+                <div class="news-date">
+                    <span class="day">15</span>
+                    <span class="month">August 2026</span>
+                </div>
+                <div class="news-content">
+                    <h3>New Partnership with Glasgow City Council</h3>
+                    <p>FORCAS is proud to announce a new partnership with Glasgow City Council to support youth empowerment programmes in Malawi.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">
+                    <span class="day">05</span>
+                    <span class="month">August 2026</span>
+                </div>
+                <div class="news-content">
+                    <h3>20 Youth Graduate from Skills Training</h3>
+                    <p>20 young people have successfully completed soap and candle making training and are now starting their own businesses.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">
+                    <span class="day">20</span>
+                    <span class="month">July 2026</span>
+                </div>
+                <div class="news-content">
+                    <h3>Borehole Installation Complete in Kaphiri</h3>
+                    <p>The borehole supported by FORCAS is now providing clean water to over 500 families in Kaphiri Trading Centre.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">
+                    <span class="day">10</span>
+                    <span class="month">July 2026</span>
+                </div>
+                <div class="news-content">
+                    <h3>25 Peer Educators Complete Training</h3>
+                    <p>Youth peer educators have been trained and are now leading HIV prevention outreach activities across communities.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
+            <div class="news-item">
+                <div class="news-date">
+                    <span class="day">01</span>
+                    <span class="month">June 2026</span>
+                </div>
+                <div class="news-content">
+                    <h3>U.S. Embassy Supports Health Facility</h3>
+                    <p>The U.S. Embassy Ambassadors Self-Help Program has provided funding to support an under-five health facility.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div><strong>FORCAS</strong><br>For Children, With Children<br>Protecting Children. Empowering Young People. Strengthening Communities.</div>
+                <div><a href="index.html">Home</a> · <a href="stories.html">Stories</a> · <a href="news.html">News</a> · <a href="donate.html">Donate</a></div>
+                <div><i class="fas fa-envelope"></i> info@forcasfoundationmw.org<br><i class="fas fa-phone"></i> +265 999 265 816</div>
+            </div>
+            <div class="footer-bottom">
+                <span>© Forum for Child Affairs Support (FORCAS). All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

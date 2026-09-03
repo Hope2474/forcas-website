@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate · FORCAS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #0a2e4a;
+            --accent: #bc1fe4;
+            --accent-dark: #9a16c4;
+            --border: #dce8f0;
+            --light-bg: #f5f9fc;
+            --text: #1a2e3e;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fbfd;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .btn {
+            background: var(--accent);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .btn:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(188, 31, 228, 0.3);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 12px 0;
+        }
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo-area .logo-item img {
+            height: 48px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+        }
+        .nav-actions .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== PAGE HEADER ===== */
+        .page-header {
+            padding: 60px 0 30px;
+            background: var(--primary);
+            color: #fff;
+            text-align: center;
+        }
+        .page-header h1 {
+            font-size: 2.8rem;
+        }
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+        }
+
+        /* ===== PAGE CONTENT ===== */
+        .page-content {
+            padding: 40px 0;
+        }
+
+        /* ===== DONATE OPTIONS ===== */
+        .donate-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px;
+            margin: 30px 0;
+        }
+        .donate-option {
+            background: #fff;
+            border-radius: 24px;
+            padding: 20px 12px;
+            text-align: center;
+            border: 2px solid var(--border);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+
+        .donate-option:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(188, 31, 228, 0.12);
+            transform: translateY(-4px);
+        }
+        .donate-option .amount {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .donate-option .label {
+            color: #6a8a9e;
+            margin-top: 4px;
+            font-size: 0.8rem;
+        }
+        .donate-option .icon {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        .donate-option.selected {
+            border-color: var(--accent);
+            background: #f8f0fc;
+            box-shadow: 0 4px 16px rgba(188, 31, 228, 0.15);
+        }
+
+        /* ===== DONATE FORM ===== */
+        .donate-form {
+            background: #fff;
+            border-radius: 32px;
+            padding: 32px;
+            border: 1px solid var(--border);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--primary);
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            font-size: 1rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(188, 31, 228, 0.15);
+        }
+        .form-group select {
+            appearance: auto;
+            cursor: pointer;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .currency-amount-row {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 16px;
+        }
+
+        /* ===== PAYMENT METHODS ===== */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .payment-method-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 14px 8px;
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            background: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-family: inherit;
+        }
+        .payment-method-btn:hover {
+            border-color: var(--accent);
+            background: #faf0fc;
+        }
+        .payment-method-btn.active {
+            border-color: var(--accent);
+            background: #f8f0fc;
+            box-shadow: 0 0 0 3px rgba(188, 31, 228, 0.1);
+        }
+        .payment-method-btn i {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        .payment-method-btn .method-label {
+            font-size: 0.7rem;
+            color: #6a8a9e;
+        }
+
+        /* ===== PAYMENT DETAILS ===== */
+        .payment-details {
+            display: none;
+            margin-top: 16px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        .payment-details.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .payment-details .info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #eef3f7;
+            flex-wrap: wrap;
+        }
+        .payment-details .info-row:last-child {
+            border-bottom: none;
+        }
+        .payment-details .info-row i {
+            width: 24px;
+            color: var(--accent);
+        }
+        .payment-details .info-row strong {
+            min-width: 100px;
+            color: var(--primary);
+        }
+        .payment-details .info-row .copy-btn {
+            background: var(--light-bg);
+            border: none;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.2s;
+            margin-left: 8px;
+            font-family: inherit;
+        }
+        .payment-details .info-row .copy-btn:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .payment-details .qr-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 16px;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px dashed var(--border);
+            margin-top: 12px;
+        }
+        .payment-details .qr-placeholder i {
+            font-size: 3rem;
+            color: var(--accent);
+        }
+        .payment-details .qr-placeholder span {
+            color: #6a8a9e;
+            font-size: 0.9rem;
+        }
+
+        /* ===== SUBMIT BUTTON ===== */
+        .submit-donate {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            margin-top: 10px;
+            font-family: inherit;
+        }
+        .submit-donate:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(188, 31, 228, 0.3);
+        }
+        .submit-donate:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--accent);
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== CURRENCY NOTE ===== */
+        .currency-note {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f0f7ff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #1c4a66;
+        }
+        .currency-note i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* ===== SUCCESS MESSAGE ===== */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            background: #f0faf4;
+            border-radius: 24px;
+            border: 2px solid #4caf50;
+        }
+        .success-message.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        .success-message i {
+            font-size: 4rem;
+            color: #4caf50;
+            margin-bottom: 16px;
+        }
+        .success-message h3 {
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+        .success-message p {
+            color: #4a6a7e;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary);
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer-grid h4 {
+            margin-bottom: 12px;
+        }
+        .footer-grid ul {
+            list-style: none;
+        }
+        .footer-grid ul li {
+            margin-bottom: 6px;
+        }
+        .footer-grid ul li a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .footer-grid ul li a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            opacity: 0.7;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .footer-bottom a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 16px 0;
+                gap: 12px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .navbar .container {
+                flex-wrap: wrap;
+            }
+            .nav-actions {
+                margin-left: auto;
+            }
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .currency-amount-row {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .donate-options {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            .donate-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo-area">
+                <div class="logo-item">
+                    <img src="images/logo/logo.png" alt="FORCAS logo" style="height:48px; width:auto;" />
+                </div>
+            </div>
+            <div class="tagline-header"><i class="fas fa-seedling"></i> For Children, With Children</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#programmes">Programmes</a>
+                <a href="index.html#impact">Impact</a>
+                <a href="index.html#governance">Governance</a>
+                <a href="index.html#partners">Partners</a>
+                <a href="stories.html#stories">Stories</a>
+                <a href="news.html#news">News</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <div class="nav-actions">
+                <a href="donate.html#donate" class="btn"><i class="fas fa-hand-holding-heart"></i> Donate</a>
+            </div>
+        </div>
+    </nav>
+
+<!-- ===== PAGE HEADER ===== -->
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-hand-holding-heart"></i> Support Our Work</h1>
+            <p>Every contribution makes a difference in a child's life</p>
+        </div>
+    </div>
+
+    <!-- ===== PAGE CONTENT ===== -->
+    <div class="container page-content">
+        <!-- Donation Amount Options -->
+        <div class="donate-options">
+            <div class="donate-option" data-amount="5">
+                <div class="icon"><i class="fas fa-seedling"></i></div>
+                <div class="label">Provides a meal for a child</div>
+            </div>
+            <div class="donate-option" data-amount="10">
+                <div class="icon"><i class="fas fa-book"></i></div>
+                <div class="label">School supplies for one child</div>
+            </div>
+            <div class="donate-option selected" data-amount="25">
+                <div class="icon"><i class="fas fa-hand-holding-water"></i></div>
+                <div class="label">A month of health services</div>
+            </div>
+            <div class="donate-option" data-amount="50">
+                <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+                <div class="label">Vocational training materials</div>
+            </div>
+            <div class="donate-option" data-amount="100">
+                <div class="icon"><i class="fas fa-heart"></i></div>
+                <div class="label">Borehole for a community</div>
+            </div>
+            <div class="donate-option" data-amount="500">
+                <div class="icon"><i class="fas fa-hands-helping"></i></div>
+                <div class="label">Full community programme</div>
+            </div>
+        </div>
+
+        <!-- Donation Form -->
+        <div class="donate-form" id="donateFormContainer">
+            <h2 style="margin-bottom: 20px;">Make a Donation</h2>
+            
+            <div class="currency-note">
+                <i class="fas fa-globe"></i>
+                <span>Select your preferred currency. All amounts will be converted to USD for processing.</span>
+            </div>
+
+            <form id="donateForm">
+                <!-- Currency and Amount -->
+                <div class="currency-amount-row">
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select id="currency" required>
+                            <optgroup label="Major Currencies">
+                                <option value="USD">🇺🇸 USD - US Dollar</option>
+                                <option value="EUR">🇪🇺 EUR - Euro</option>
+                                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                                <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+                                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                                <option value="CHF">🇨🇭 CHF - Swiss Franc</option>
+                                <option value="CNY">🇨🇳 CNY - Chinese Yuan</option>
+                            </optgroup>
+                            <optgroup label="African Currencies">
+                                <option value="ZAR">🇿🇦 ZAR - South African Rand</option>
+                                <option value="NGN">🇳🇬 NGN - Nigerian Naira</option>
+                                <option value="KES">🇰🇪 KES - Kenyan Shilling</option>
+                                <option value="GHS">🇬🇭 GHS - Ghanaian Cedi</option>
+                                <option value="MWK" selected>🇲🇼 MWK - Malawian Kwacha</option>
+                                <option value="UGX">🇺🇬 UGX - Ugandan Shilling</option>
+                                <option value="TZS">🇹🇿 TZS - Tanzanian Shilling</option>
+                                <option value="ZMW">🇿🇲 ZMW - Zambian Kwacha</option>
+                                <option value="MZN">🇲🇿 MZN - Mozambican Metical</option>
+                                <option value="BWP">🇧🇼 BWP - Botswana Pula</option>
+                                <option value="EGP">🇪🇬 EGP - Egyptian Pound</option>
+                                <option value="MAD">🇲🇦 MAD - Moroccan Dirham</option>
+                            </optgroup>
+                            <optgroup label="Asian Currencies">
+                                <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                                <option value="KRW">🇰🇷 KRW - South Korean Won</option>
+                                <option value="SGD">🇸🇬 SGD - Singapore Dollar</option>
+                                <option value="MYR">🇲🇾 MYR - Malaysian Ringgit</option>
+                                <option value="THB">🇹🇭 THB - Thai Baht</option>
+                                <option value="PHP">🇵🇭 PHP - Philippine Peso</option>
+                                <option value="PKR">🇵🇰 PKR - Pakistani Rupee</option>
+                            </optgroup>
+                            <optgroup label="Middle Eastern">
+                                <option value="AED">🇦🇪 AED - UAE Dirham</option>
+                                <option value="SAR">🇸🇦 SAR - Saudi Riyal</option>
+                                <option value="QAR">🇶🇦 QAR - Qatari Riyal</option>
+                                <option value="KWD">🇰🇼 KWD - Kuwaiti Dinar</option>
+                            </optgroup>
+                            <optgroup label="Other Currencies">
+                                <option value="SEK">🇸🇪 SEK - Swedish Krona</option>
+                                <option value="NOK">🇳🇴 NOK - Norwegian Krone</option>
+                                <option value="DKK">🇩🇰 DKK - Danish Krone</option>
+                                <option value="PLN">🇵🇱 PLN - Polish Zloty</option>
+                                <option value="TRY">🇹🇷 TRY - Turkish Lira</option>
+                                <option value="MXN">🇲🇽 MXN - Mexican Peso</option>
+                                <option value="BRL">🇧🇷 BRL - Brazilian Real</option>
+                                <option value="NZD">🇳🇿 NZD - New Zealand Dollar</option>
+                            </optgroup>
+                            <optgroup label="Cryptocurrencies">
+                                <option value="BTC">₿ BTC - Bitcoin</option>
+                                <option value="ETH">⟠ ETH - Ethereum</option>
+                                <option value="USDC">💵 USDC - USD Coin</option>
+                                <option value="USDT">💵 USDT - Tether</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="donationAmount">Amount</label>
+                        <input type="number" id="donationAmount" value="25" min="1" step="0.01" required />
+                    </div>
+                </div>
+
+                <!-- Personal Information -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span style="color:#d32f2f;">*</span></label>
+                        <input type="text" id="fullName" placeholder="Your full name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address <span style="color:#d32f2f;">*</span></label>
+                        <input type="email" id="email" placeholder="your@email.com" required />
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="form-group">
+                    <label>Payment Method <span style="color:#d32f2f;">*</span></label>
+                    <div class="payment-methods">
+                        <button type="button" class="payment-method-btn active" data-method="card">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Card</span>
+                            <span class="method-label">Credit / Debit</span>
+                        </button>
+                        <button type="button" class="payment-method-btn" data-method="paypal">
+                            <i class="fab fa-paypal"></i>
+                            <span>PayPal</span>
+                            <span class="method-label">Online Payment</span>
+                        </button>
+                        <button type="button" class="payment-method-btn" data-method="bank">
+                            <i class="fas fa-university"></i>
+                            <span>Bank</span>
+                            <span class="method-label">Bank Transfer</span>
+                        </button>
+                        <button type="button" class="payment-method-btn" data-method="mobile">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span>Mobile</span>
+                            <span class="method-label">Mobile Money</span>
+                        </button>
+                        <button type="button" class="payment-method-btn" data-method="crypto">
+                            <i class="fab fa-bitcoin"></i>
+                            <span>Crypto</span>
+                            <span class="method-label">Cryptocurrency</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Payment Details Sections -->
+                <div id="paymentDetails">
+                    <!-- Credit/Debit Card -->
+                    <div class="payment-details active" id="cardDetails">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" />
+                            </div>
+                            <div class="form-group">
+                                <label for="cardName">Name on Card</label>
+                                <input type="text" id="cardName" placeholder="John Doe" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" placeholder="MM/YY" />
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" placeholder="123" maxlength="4" />
+                            </div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-lock"></i>
+                            <span style="font-size:0.85rem;color:#6a8a9e;">Your card details are encrypted and secure</span>
+                        </div>
+                    </div>
+
+
+                    <!-- PayPal -->
+                    <div class="payment-details" id="paypalDetails">
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <strong>PayPal Email:</strong>
+                            <span>payments@forcasfoundationmw.org</span>
+                            <button type="button" class="copy-btn" onclick="copyText('payments@forcasfoundationmw.org')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>You will be redirected to PayPal to complete your payment securely.</span>
+                        </div>
+                        <div class="qr-placeholder">
+                            <i class="fab fa-paypal"></i>
+                            <span>PayPal QR Code available for in-person payments</span>
+                        </div>
+                    </div>
+
+                    <!-- Bank Transfer -->
+                    <div class="payment-details" id="bankDetails">
+                        <div class="info-row">
+                            <i class="fas fa-university"></i>
+                            <strong>Bank Name:</strong>
+                            <span>National Bank of Malawi</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-user"></i>
+                            <strong>Account Name:</strong>
+                            <span>Forum for Child Affairs Support</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-hashtag"></i>
+                            <strong>Account Number:</strong>
+                            <span>1234567890</span>
+                            <button type="button" class="copy-btn" onclick="copyText('1234567890')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-code-branch"></i>
+                            <strong>Branch:</strong>
+                            <span>Lilongwe Main Branch</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-globe"></i>
+                            <strong>SWIFT Code:</strong>
+                            <span>NBMWMWMW</span>
+                            <button type="button" class="copy-btn" onclick="copyText('NBMWMWMW')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-info-circle"></i>
+                            <span style="font-size:0.85rem;color:#6a8a9e;">Please use your full name as reference</span>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Money -->
+                    <div class="payment-details" id="mobileDetails">
+                        <div class="form-group">
+                            <label for="mobileProvider">Mobile Money Provider</label>
+                            <select id="mobileProvider">
+                                <option value="tnm">TNM Mpamba</option>
+                                <option value="airtel">Airtel Money</option>
+                                <option value="m-pesa">M-PESA (Kenya)</option>
+                                <option value="mtn">MTN Mobile Money</option>
+                                <option value="orange">Orange Money</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mobileNumber">Mobile Number</label>
+                            <input type="tel" id="mobileNumber" placeholder="+265 999 123 456" />
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-phone"></i>
+                            <strong>Payee Number:</strong>
+                            <span>+265 888 123 456</span>
+                            <button type="button" class="copy-btn" onclick="copyText('+265888123456')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-info-circle"></i>
+                            <span style="font-size:0.85rem;color:#6a8a9e;">You will receive a prompt on your phone to confirm payment</span>
+                        </div>
+                    </div>
+
+                    <!-- Cryptocurrency -->
+                    <div class="payment-details" id="cryptoDetails">
+                        <div class="form-group">
+                            <label for="cryptoCurrency">Cryptocurrency</label>
+                            <select id="cryptoCurrency">
+                                <option value="bitcoin">Bitcoin (BTC)</option>
+                                <option value="ethereum">Ethereum (ETH)</option>
+                                <option value="usdc">USD Coin (USDC)</option>
+                                <option value="usdt">Tether (USDT)</option>
+                            </select>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-wallet"></i>
+                            <strong>Wallet Address:</strong>
+                            <span style="font-size:0.8rem;word-break:break-all;">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</span>
+                            <button type="button" class="copy-btn" onclick="copyText('1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa')">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                        <div class="qr-placeholder">
+                            <i class="fas fa-qrcode"></i>
+                            <span>Scan QR code with your crypto wallet</span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-info-circle"></i>
+                            <span style="font-size:0.85rem;color:#6a8a9e;">⚠️ Send only the selected cryptocurrency to this address</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Donation Type & Message -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="donationType">Donation Type</label>
+                        <select id="donationType">
+                            <option value="one-time">One-time Donation</option>
+                            <option value="monthly">Monthly Recurring</option>
+                            <option value="yearly">Yearly Recurring</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <input type="text" id="message" placeholder="Any special instructions or message" />
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-donate" id="submitBtn">
+                    <i class="fas fa-lock"></i> Complete Donation
+                </button>
+            </form>
+
+
+               <!-- Success Message -->
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Thank You for Your Donation!</h3>
+                <p>Your generosity will help transform lives and build stronger communities.</p>
+                <p style="margin-top:8px;font-size:0.9rem;color:#4a6a7e;">A confirmation email has been sent to your inbox.</p>
+                <button onclick="resetForm()" class="btn" style="margin-top:16px;">
+                    <i class="fas fa-redo"></i> Make Another Donation
+                </button>
+            </div>
+
+            <p style="margin-top: 16px; font-size: 0.85rem; color: #6a8a9e; text-align:center;">
+                <i class="fas fa-shield-alt"></i> Your donation is secure and 100% goes to our programmes.
+                <span style="display:block; margin-top:4px;">
+                    <i class="fas fa-exchange-alt"></i> Exchange rates are updated daily.
+                </span>
+            </p>
+        </div>
+
+        <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h4>FORCAS</h4>
+                    <p>For Children, With Children</p>
+                    <p style="font-size:0.85rem; opacity:0.7;">Protecting Children. Empowering Young People. Strengthening Communities.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="stories.html">Stories</a></li>
+                        <li><a href="news.html">News</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-envelope"></i> info@forcasfoundationmw.org</p>
+                    <p><i class="fas fa-phone"></i> +265 999 265 816</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Forum for Child Affairs Support (FORCAS). All rights reserved.</span>
+                <span><a href="#">Privacy Policy</a> · <a href="#">Safeguarding</a> · <a href="#">Terms of Use</a></span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MOBILE NAV TOGGLE =====
+        document.getElementById('navToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // ===== DONATION AMOUNT SELECTION =====
+        document.querySelectorAll('.donate-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.donate-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                const amount = this.dataset.amount;
+                document.getElementById('donationAmount').value = amount;
+            });
+        });
+
+        // ===== PAYMENT METHOD SELECTION =====
+        document.querySelectorAll('.payment-method-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const method = this.dataset.method;
+                document.querySelectorAll('.payment-details').forEach(detail => {
+                    detail.classList.remove('active');
+                });
+                const target = document.getElementById(method + 'Details');
+                if (target) {
+                    target.classList.add('active');
+                }
+            });
+        });
+
+
+        // ===== COPY FUNCTION =====
+        function copyText(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showCopyNotification('Copied: ' + text);
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const input = document.createElement('input');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            try {
+                document.execCommand('copy');
+                showCopyNotification('Copied: ' + text);
+            } catch (e) {
+                alert('Could not copy. Please copy manually: ' + text);
+            }
+            document.body.removeChild(input);
+        }
+
+        function showCopyNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #0a2e4a;
+                color: #fff;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-size: 0.95rem;
+                z-index: 1000;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                animation: fadeIn 0.3s ease;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 2000);
+        }
+
+        // ===== FORM SUBMISSION =====
+        document.getElementById('donateForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const amount = document.getElementById('donationAmount').value;
+            
+            // Validation
+            if (!name) {
+                alert('Please enter your full name.');
+                document.getElementById('fullName').focus();
+                return;
+            }
+            if (!email) {
+                alert('Please enter your email address.');
+                document.getElementById('email').focus();
+                return;
+            }
+            if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+                document.getElementById('email').focus();
+                return;
+            }
+            if (!amount || amount < 1) {
+                alert('Please enter a valid donation amount (minimum $1).');
+                document.getElementById('donationAmount').focus();
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+
+            // Simulate processing (replace with actual API call)
+            setTimeout(() => {
+                document.getElementById('donateForm').style.display = 'none';
+                document.getElementById('successMessage').classList.add('show');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Scroll to success message
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 1500);
+        });
+
+H
+        // ===== RESET FORM =====
+        function resetForm() {
+            document.getElementById('donateForm').style.display = 'block';
+            document.getElementById('successMessage').classList.remove('show');
+            document.getElementById('donateForm').reset();
+            document.getElementById('donationAmount').value = '25';
+            
+            // Reset to default payment method
+            document.querySelectorAll('.payment-method-btn').forEach(b => b.classList.remove('active'));
+            const defaultBtn = document.querySelector('.payment-method-btn[data-method="card"]');
+            if (defaultBtn) defaultBtn.classList.add('active');
+            
+            document.querySelectorAll('.payment-details').forEach(d => d.classList.remove('active'));
+            const defaultDetails = document.getElementById('cardDetails');
+            if (defaultDetails) defaultDetails.classList.add('active');
+            
+            // Reset donation option selection
+            document.querySelectorAll('.donate-option').forEach(opt => opt.classList.remove('selected'));
+            const defaultOption = document.querySelector('.donate-option[data-amount="25"]');
+            if (defaultOption) defaultOption.classList.add('selected');
+            
+            // Scroll to form
+            document.getElementById('donateFormContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // ===== AMOUNT INPUT SYNC =====
+        document.getElementById('donationAmount').addEventListener('input', function() {
+            const value = this.value;
+            document.querySelectorAll('.donate-option').forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.amount === value) {
+                    opt.classList.add('selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
