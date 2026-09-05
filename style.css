@@ -576,7 +576,7 @@ img {
 
 .logo-slider-container::before {
     left: 0;
-    background: linear-gradient(to right, var(--white), transparent);
+    background: linear-gradient(to right, var(--), transparent);
 }
 
 .logo-slider-container::after {
