@@ -215,3 +215,48 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('FORCAS Website - Database Integration Ready ✅');
 });
+
+// ==========================================
+// HERO PARTICLES BACKGROUND
+// ==========================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('particles-container');
+    if (!container) return;
+    
+    const colors = ['#f4b942', '#ffffff', '#e0a832', '#ffd700', '#ff6b6b'];
+    const numParticles = 25;
+    
+    for (let i = 0; i < numParticles; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        const size = Math.random() * 6 + 2;
+        particle.style.cssText = `
+            width: ${size}px;
+            height: ${size}px;
+            background: ${colors[Math.floor(Math.random() * colors.length)]};
+            position: absolute;
+            border-radius: 50%;
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            opacity: ${Math.random() * 0.3 + 0.1};
+            animation: floatParticle ${6 + Math.random() * 6}s ease-in-out infinite;
+            animation-delay: ${Math.random() * 5}s;
+            pointer-events: none;
+        `;
+        container.appendChild(particle);
+    }
+    
+    // Add keyframes if not already added
+    if (!document.querySelector('#particle-style')) {
+        const style = document.createElement('style');
+        style.id = 'particle-style';
+        style.textContent = `
+            @keyframes floatParticle {
+                0%, 100% { transform: translateY(0) scale(1); }
+                50% { transform: translateY(-40px) scale(1.2); }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+});
